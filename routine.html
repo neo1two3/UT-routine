@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create your class routine | Universal Tutorial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html">
+      <img src="images/logo.png" alt="Universal Tutorial logo">
+      <span>UNIVERSAL TUTORIAL</span>
+    </a>
+    <a class="home-link" href="index.html">&larr; Home</a>
+  </header>
+
+  <main>
+    <div class="page-title">
+      <h1>Create your class routine</h1>
+      <p>Add each teacher with their subjects and free periods, then generate the weekly routine.</p>
+    </div>
+
+    <!-- STEP 1: TEACHER FORM -->
+    <section class="card">
+      <div class="card-head">
+        <h2 id="form-title">1. Add a teacher</h2>
+        <button type="button" id="load-sample" class="link-btn">Try sample data</button>
+      </div>
+
+      <label>Teacher name
+        <input id="name" type="text" placeholder="Ms Fareen">
+      </label>
+
+      <h3>Subjects and classes</h3>
+      <p class="hint">One row per subject. "Periods per week" counts for <b>each</b> class
+        (Biology, classes 7, 8, 9, 2 periods = 6 periods in total).</p>
+      <div id="assignment-rows"></div>
+      <button type="button" id="add-assignment" class="secondary">+ Add another subject</button>
+
+      <h3>Free periods</h3>
+      <p class="hint">Click the periods this teacher can take. Click a day or a period name to pick the whole column or row.</p>
+      <div class="grid-wrap" id="availability-grid"></div>
+      <div class="grid-actions">
+        <button type="button" id="select-all" class="secondary small">Select all</button>
+        <button type="button" id="clear-all" class="secondary small">Clear</button>
+      </div>
+
+      <p id="summary" class="summary"></p>
+      <p id="form-msg" class="error"></p>
+      <div class="form-buttons">
+        <button type="button" id="save-teacher">Save teacher</button>
+        <button type="button" id="cancel-edit" class="secondary" hidden>Cancel edit</button>
+      </div>
+    </section>
+
+    <!-- STEP 2: TEACHER LIST -->
+    <section class="card">
+      <h2>2. Teachers added</h2>
+      <p id="list-msg" class="error"></p>
+      <div id="teacher-list"></div>
+      <div class="backup">
+        <button type="button" id="download-backup" class="secondary small">Download backup</button>
+        <button type="button" id="restore-backup" class="secondary small">Restore backup</button>
+        <button type="button" id="delete-all" class="danger small">Delete all</button>
+        <input type="file" id="backup-file" accept=".json,application/json" hidden>
+      </div>
+      <p class="hint">Teachers are saved in this browser on this device only. Download a backup to keep them safe or to open them on another device.</p>
+    </section>
+
+    <!-- STEP 3: ROUTINE -->
+    <section class="card wide">
+      <h2>3. Weekly routine</h2>
+      <div class="toolbar">
+        <button type="button" id="generate">Generate routine</button>
+        <label class="inline">View by
+          <select id="view-mode">
+            <option value="class">Class</option>
+            <option value="teacher">Teacher</option>
+          </select>
+        </label>
+        <button type="button" id="print" class="secondary">Print</button>
+      </div>
+      <div id="warnings"></div>
+      <div id="routine"></div>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="scheduler.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
